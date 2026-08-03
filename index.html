@@ -1,185 +1,277 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuro IA | El Blog de Inteligencia Artificial</title>
+    <meta name="description" content="Download nauterm, a modern cross-platform terminal and remote access workspace. Supports SSH, Mosh, Telnet, serial, SFTP, port forwarding, snippets, and encrypted sync.">
+    <meta name="keywords" content="nauterm, terminal, ssh client, mosh, telnet, serial terminal, sftp, port forwarding, snippets, encrypted sync, windows terminal, cross-platform terminal, dart, flutter, rust">
+    <meta name="robots" content="index, follow">
+    <title>nauterm - Modern Terminal & Remote Access Workspace</title>
     <style>
-        /* CSS PREMIUM INTEGRADO - EVITA EL FONDO BLANCO Y DA EFECTOS FUTURISTAS */
-        body { 
-            background-color: #0b0f19; 
-            color: #f3f4f6; 
-            font-family: system-ui, -apple-system, sans-serif; 
-            margin: 0; 
-            padding: 0;
-        }
-        header { 
-            background: linear-gradient(135deg, #111827 0%, #1f2937 100%); 
-            padding: 25px; 
-            border-bottom: 2px solid #3b82f6; 
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-        .logo {
-            font-size: 32px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(to right, #3b82f6, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .main-container {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            line-height: 1.7;
+            padding: 40px 20px;
+            min-height: 100vh;
         }
-        @media (min-width: 768px) {
-            .main-container { grid-template-columns: 2fr 1fr; }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            padding: 50px 45px;
         }
-        /* TARJETAS MODERNAS CON IMÁGENES */
-        .card { 
-            background-color: #1f2937; 
-            border-radius: 16px; 
-            overflow: hidden; 
-            margin-bottom: 30px; 
-            border: 1px solid #374151;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            body {
+                padding: 20px 10px;
+            }
         }
-        .card:hover { transform: translateY(-5px); border-color: #3b82f6; }
-        .image-placeholder {
-            width: 100%;
-            height: 240px;
-            background: linear-gradient(135deg, #1e3a8a 0%, #4c1d95 100%);
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1a1a2e;
+            letter-spacing: -0.5px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-bottom: 1px solid #374151;
+            gap: 12px;
         }
-        .card-content { padding: 25px; }
-        .tag {
-            background-color: rgba(59, 130, 246, 0.2);
-            color: #60a5fa;
+
+        h1 span {
+            background: #3498db;
+            color: #ffffff;
+            font-size: 0.9rem;
+            font-weight: 500;
             padding: 4px 12px;
-            border-radius: 9999px;
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
+            border-radius: 20px;
+            letter-spacing: 0;
         }
-        .card h2 { font-size: 24px; margin: 15px 0 10px 0; color: #ffffff; }
-        .card p { color: #9ca3af; line-height: 1.7; font-size: 15px; }
-        /* BLOQUES DE PUBLICIDAD PERFECTAMENTE DESTACADOS */
-        .anuncio-box { 
-            border: 2px dashed #4b5563; 
-            background: linear-gradient(180deg, #111827 0%, #1f2937 100%);
-            padding: 30px 20px; 
-            text-align: center; 
-            border-radius: 16px; 
-            margin: 25px 0; 
-            color: #9ca3af; 
-            font-family: monospace;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #5d6d7e;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 18px;
+            font-weight: 400;
         }
-        .anuncio-tag { font-size: 11px; color: #3b82f6; tracking-widest: 1px; display: block; margin-bottom: 10px; font-weight: bold; }
-        aside { background-color: #111827; padding: 25px; border-radius: 16px; border: 1px solid #374151; height: fit-content; }
-        footer { text-align: center; padding: 30px; color: #4b5563; border-top: 1px solid #1f2937; margin-top: 50px; font-size: 14px; }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 30px 0 35px 0;
+            align-items: center;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: #2980b9;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 16px 38px;
+            border-radius: 40px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(41, 128, 185, 0.3);
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #1f618d;
+            box-shadow: 0 6px 20px rgba(41, 128, 185, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: #ecf0f1;
+            color: #2c3e50;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 14px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #d5dbdb;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 40px 0 16px 0;
+            color: #1a1a2e;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #eaecee;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 24px 0 10px 0;
+            color: #2c3e50;
+        }
+
+        p {
+            margin: 14px 0;
+            font-size: 1rem;
+        }
+
+        ul, ol {
+            margin: 14px 0 14px 22px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 600px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 18px 20px;
+            border-radius: 12px;
+            border-left: 4px solid #3498db;
+        }
+
+        .feature-card strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 1.05rem;
+        }
+
+        .step-box {
+            background: #f8f9fa;
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin: 16px 0;
+            border: 1px solid #e5e8eb;
+        }
+
+        .step-box ol {
+            margin-left: 18px;
+        }
+
+        .step-box li {
+            margin-bottom: 10px;
+        }
+
+        code {
+            background: #eaecee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #c0392b;
+        }
+
+        .note-box {
+            background: #fff8e1;
+            padding: 16px 20px;
+            border-radius: 12px;
+            border-left: 4px solid #f39c12;
+            margin: 18px 0;
+        }
+
+        .topic-tags {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eaecee;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .topic-tag {
+            background: #ecf0f1;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #2c3e50;
+        }
+
+        .footer-note {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        a {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: #1a5276;
+        }
     </style>
 </head>
 <body>
-
-    <!-- CABECERA DE LA WEB -->
-        <!-- CABECERA DE LA WEB CON ENLACES REALES -->
-    <header>
-        <h1 class="logo">FUTURO IA</h1>
-        <p style="color: #9ca3af; margin: 8px 0 12px 0; font-size: 14px;">Herramientas avanzadas y monetización de webs automáticas</p>
-        
-        <!-- MENÚ DE NAVEGACIÓN -->
-        <nav style="margin-top: 15px; display: flex; justify-content: center; gap: 20px; font-size: 14px;">
-            <a href="index.html" style="color: #3b82f6; text-decoration: none; font-weight: bold;">Inicio</a>
-            <a href="tutoriales.html" style="color: #f3f4f6; text-decoration: none; hover: color: #3b82f6;">Tutoriales Prompts</a>
-            <a href="herramientas.html" style="color: #f3f4f6; text-decoration: none;">Herramientas Gratuitas</a>
-            <a href="ganar-dinero.html" style="color: #f3f4f6; text-decoration: none;">Guía Monetización</a>
-        </nav>
-    </header>
-
-    <!-- CONTENEDOR DE PUBLICIDAD SUPERIOR -->
-    <div style="max-width: 1100px; margin: 20px auto 0 auto; padding: 0 20px;">
-        <div class="anuncio-box">
-            <span class="anuncio-tag">ZONA PUBLICITARIA DISPONIBLE</span>
-            <script>
-  atOptions = {
-    'key' : 'be05e040cfeb142ddd2353a724a11ff9',
-    'format' : 'iframe',
-    'height' : 90,
-    'width' : 728,
-    'params' : {}
-  };
-</script>
-<script src="https://www.highperformanceformat.com/be05e040cfeb142ddd2353a724a11ff9/invoke.js"></script>
-
+    <div class="container">
+        <!-- Title -->
+        <h1>
+            🖥️ nauterm
+            <span>v2.1</span>
+        </h1>
+        <div class="tagline">
+            Your secure workspace for remote connections
         </div>
-    </div>
 
-    <!-- CONTENIDO CON DISEÑO EN COLUMNAS -->
-    <div class="main-container">
-        
-        <!-- COLUMNA PRINCIPAL DE ARTÍCULOS -->
-        <main>
-            <!-- Artículo 1 -->
-            <article class="card">
-                <!-- GRÁFICO SEGURO DE INTELIGENCIA ARTIFICIAL -->
-                <div class="image-placeholder">
-                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v12"/><path d="M6 12h12"/><circle cx="12" cy="12" r="3" fill="#4c1d95"/></svg>
-                </div>
-                <div class="card-content">
-                    <span class="tag">Estrategia</span>
-                    <h2>Cómo crear webs automáticas con IA y monetizarlas desde cero</h2>
-                    <p>La Inteligencia Artificial ha cambiado por completo las reglas de creación de contenido en Internet. Hoy en día es completamente viable estructurar blogs automáticos de nicho utilizando prompts avanzados para atraer miles de visitas mensuales desde Google y generar ingresos pasivos constantes mediante clics.</p>
-                </div>
-            </article>
+        <!-- Primary download badge -->
+        <div class="hero-buttons">
+            <a href="https://github.com/gansupomatomidae135/nauterm/releases" class="btn-primary" target="_blank" rel="noopener noreferrer">
+                ⬇️ Download for Windows
+            </a>
+            <a href="#features" class="btn-secondary">
+                See features
+            </a>
+        </div>
 
-            <!-- ANUNCIO INTEGRADO ENTRE ARTÍCULOS -->
-            <div class="anuncio-box">
-                <span class="anuncio-tag">PUBLICIDAD INTEGRADA</span>
-                [ COPIA AQUÍ TU CÓDIGO DE ANUNCIO NATIVO PARA CONTENIDO ]
-            </div>
+        <p>
+            nauterm is a modern terminal application that replaces multiple tools. Use it to connect to remote servers, transfer files, manage serial devices, and keep your work organized — all from one clean interface. No programming knowledge required.
+        </p>
 
-            <!-- Artículo 2 -->
-            <article class="card">
-                <!-- GRÁFICO SEGURO TECNOLÓGICO -->
-                <div class="image-placeholder" style="background: linear-gradient(135deg, #065f46 0%, #111827 100%);">
-                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                </div>
-                <div class="card-content">
-                    <span class="tag">Herramientas</span>
-                    <h2>Las mejores herramientas de IA gratuitas para generar tráfico web</h2>
-                    <p>Optimizar tus artículos para motores de búsqueda (SEO) es la clave principal si quieres que tus espacios publicitarios se llenen de beneficios. Analizamos los generadores de copies y estructuradores de texto automáticos más estables del mercado para acelerar tu producción diaria.</p>
-                </div>
-            </article>
-        </main>
-
-        <!-- BARRA LATERAL -->
-        <aside>
-            <h3 style="color: #ffffff; font-size: 18px; margin-top: 0; border-b: 1px solid #374151; padding-bottom: 10px;">Panel de Gestión</h3>
-            <p style="color: #9ca3af; font-size: 14px; line-height: 1.6;">Este blog funciona como una estructura de nicho automatizada para recopilar noticias tecnológicas e integrarse directamente con plataformas publicitarias de pago por impresión.</p>
-            
-            <!-- ANUNCIO EN BARRA LATERAL -->
-            <div class="anuncio-box" style="padding: 20px 10px;">
-                <span class="anuncio-tag">BANNER LATERAL</span>
-                [ ANUNCIO 300x250 ]
-            </div>
-        </aside>
-
-    </div>
-
-    <!-- PIE DE PÁGINA -->
-    <footer>
-        <p>&copy; 2026 Futuro IA. Sitio web optimizado para monetización pasiva de tráfico.</p>
-    </footer>
-
-</body>
-</html>
+        <!-- What is nauterm -->
+        <h2>🔍 What is nauterm?</h2>
+        <p>
+            nauterm is a <strong>cross-platform remote access workspace</strong>. Think of it as a command center for your remote work. Instead of juggling between PuTTY, WinSCP, and a serial monitor, you get one application that handles SSH, SFTP, Telnet, serial connections, and more.
+        </p>
+        <p>
+            It
